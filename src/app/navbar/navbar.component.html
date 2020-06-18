@@ -1,0 +1,27 @@
+<nav>
+  <ul class = "nav">
+    <li class = "nav-item">
+      <a class= "nav-link active" [routerLink]="['/home']">Home</a>
+    </li>
+    <li class = "nav-item">
+      <a class= "nav-link active" [routerLink]="['/contact']">Contact</a>
+    </li>
+    <li class = "nav-item">
+      <a class= "nav-link active" [routerLink]="['/blog']">Blog</a>
+    </li>
+    <li class = "nav-item">
+      <a class= "nav-link active" [routerLink]="['/add-post']">Add post</a>
+    </li>
+    <li class = "nav-item">
+      <a class= "nav-link active" *ngIf="!authService.currentUser" [routerLink]="['/signup']">Sign Up</a>
+    </li>
+    <li class = "nav-item">
+      <a class= "nav-link active" *ngIf="!authService.currentUser" [routerLink]="['/login']">Login</a>
+    </li>
+    <li class = "nav-item">
+      <button (click)="logOut()" *ngIf="authService.currentUser" class="btn btn-primary"> Logout </button>
+    </li>
+  </ul>
+  
+</nav>
+

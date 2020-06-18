@@ -1,0 +1,16 @@
+<div class="search">
+  <selectize></selectize>
+</div>
+
+<div *ngFor="let item of items$  | filter: filterText">
+  <blog-item [id]="item.id" [image]="item.url" [text]="item.content">
+  </blog-item>
+</div>
+
+<div>
+  <footer class="foot">
+    Copyrights &copy; Kamil Żydek | 2020
+  </footer>
+</div>
+
+
