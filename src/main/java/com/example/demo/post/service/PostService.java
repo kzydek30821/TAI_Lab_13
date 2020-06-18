@@ -1,6 +1,9 @@
 package com.example.demo.post.service;
 
-import com.example.demo.post.entity.Post;
+
+import com.example.demo.post.model.entity.Post;
+import com.example.demo.post.model.repository.PostRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
@@ -10,6 +13,12 @@ import java.util.List;
 public class PostService {
     private  static ArrayList<Post> posts = new ArrayList<>();
     private static int idCounter = 0;
+    private PostRepository postRepository;
+
+    @Autowired
+    public PostService(PostRepository postRepository) {
+        this.postRepository = postRepository;
+    }
 
     static {
         posts.add(new Post(++idCounter,
@@ -25,11 +34,17 @@ public class PostService {
                         "swine frankfurter doner pork belly pork drumstick ham."));
     }
 
+
     public List<Post> getAll(){
         return posts;
     }
 
     public Post get(int id){
         return posts.get(id-1);
+    }
+
+    public void addPost(Post post){
+        post.setId(++idCounter);
+        posts.add(post);
     }
 }

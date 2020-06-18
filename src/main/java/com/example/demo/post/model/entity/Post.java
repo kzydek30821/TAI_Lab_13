@@ -1,6 +1,13 @@
-package com.example.demo.post.entity;
+package com.example.demo.post.model.entity;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+
+@Entity
 public class Post {
+    @Id
+    @GeneratedValue
     private long id;
     private String title;
     private String url;
@@ -39,6 +46,16 @@ public class Post {
 
     public String getContent() {
         return content;
+    }
+
+    @Override
+    public String toString() {
+        return "Post{" +
+                "id=" + id +
+                ", title='" + title + '\'' +
+                ", url='" + url + '\'' +
+                ", content='" + content + '\'' +
+                '}';
     }
 
     public void setContent(String content) {
