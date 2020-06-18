@@ -1,3 +1,5 @@
+import { HttpIntercepterBasicAuthService } from './services/interceptor-auth.service';
+import { AuthenticationService } from './services/authentication.service';
 import { AuthGuard } from './services/auth.guard';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './services/auth.service';
@@ -26,6 +28,7 @@ import { TextFormatDirective } from './directives/text-format.directive';
 import { SelectizeComponent } from './components/selectize/selectize.component';
 import { AddPostComponent } from './components/add-post/add-post.component';
 import { SignupComponent } from './components/signup/signup.component';
+import { NewPostComponent } from './components/new-post/new-post.component';
 
 @NgModule({
   declarations: [
@@ -46,7 +49,8 @@ import { SignupComponent } from './components/signup/signup.component';
     SelectizeComponent,
     AddPostComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    NewPostComponent
   ],
   imports: [
     BrowserModule,
@@ -58,11 +62,12 @@ import { SignupComponent } from './components/signup/signup.component';
     DataService,
     AuthGuard,
     AuthService,
+    AuthenticationService,
     {
-    provide: HTTP_INTERCEPTORS,
-       useClass: AuthInterceptor,
-       multi: true
-    }
+      provide: HTTP_INTERCEPTORS,
+      useClass: HttpIntercepterBasicAuthService,
+      multi: true
+    },
 ],
   bootstrap: [AppComponent]
 })
