@@ -30,6 +30,6 @@ public class PostService {
     }
 
     public Post get(int id){
-        return posts.get(id);
+        return posts.get(id-1);
     }
 }
